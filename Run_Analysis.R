@@ -59,6 +59,7 @@ names(Data) <- gsub("_Stdev","",names(Data))
 sum(is.na(Data$Activity_Label))
 
 # Average of each variable for each activity and each subject
+library(reshape2)
 melted_data <- melt(Data, id = c("Subject", "Activity_Label"))
 casted_data <- dcast(melted_data, Subject + Activity_Label ~ variable, mean)
 
